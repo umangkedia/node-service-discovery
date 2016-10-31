@@ -1,10 +1,10 @@
 {
   "name": "node-ranger",
   "version": "0.0.1",
-  "description": "A Curator-esque framework for ZooKeeper",
+  "description": "Service Discovery framework with Zookeeper",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive --reporter spec test/*"
+    "test": "./node_modules/.bin/mocha --recursive tests/"
   },
   "author": "Umang Kedia",
   "dependencies": {
