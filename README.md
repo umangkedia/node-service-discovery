@@ -1,3 +1,3 @@
 Ranger module for nodejs
 
-Initial version taken from 
+A Service Discovery framework built on Zookeeper
