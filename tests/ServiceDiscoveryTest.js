@@ -33,6 +33,7 @@ describe("ServiceDiscovery Test", function () {
                 .basePath('basePath')
                 .client(rangerClient)
                 .serviceInstance(serviceInstance)
+                .refreshInterval(6000)
                 .build();
             done();
         });
