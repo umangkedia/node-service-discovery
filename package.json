@@ -1,5 +1,5 @@
 {
-  "name": "node-ranger",
+  "name": "ranger-node",
   "version": "0.0.1",
   "description": "Service Discovery framework with Zookeeper",
   "main": "index.js",
@@ -7,6 +7,10 @@
     "test": "./node_modules/.bin/mocha --recursive tests/"
   },
   "author": "Umang Kedia",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/umangkedia/node-ranger.git"
+  },
   "dependencies": {
     "async": "2.0.1",
     "chai": "^3.5.0",
