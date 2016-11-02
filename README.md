@@ -37,6 +37,7 @@ var serviceInstance = ServiceInstanceBuilder
         .healthChecks([healthCheck])
         .name('my-service')
         .build();
+```
 
 ### Service Discovery
 
