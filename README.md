@@ -1,6 +1,7 @@
 Service Discovery module for nodejs
 
-A Service Discovery framework built on Zookeeper. This is an extension to the nicely built Zoologist module.
+A Service Discovery framework built on Zookeeper. This is an extension to the nicely built [Zoologist](https://github.com/ph0bos/zoologist) module.
+This also enables dynamic service registration and de-registration with ZK while also guarding for other services' registration and de-registration.
 
 ## Installation
 
