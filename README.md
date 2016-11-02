@@ -74,7 +74,3 @@ var instanceProvider = serviceDiscovery
 
 // Discover available Services and provide an instance
 instanceProvider.getInstance();
-
-
-
-

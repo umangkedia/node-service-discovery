@@ -3,8 +3,6 @@
  */
 
 var should = require('chai').should();
-var assert = require('chai').assert;
-var expect = require('chai').expect;
 var Ranger = require('../lib/Ranger');
 var ServiceDiscoveryBuilder = require("../lib/ServiceDiscoveryBuilder");
 var ServiceInstance = require("../lib/ServiceInstance");
