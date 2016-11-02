@@ -23,7 +23,7 @@ describe("testing service instance", function () {
 
     it("should return data including healthcheck", function () {
         var data = serviceInstanceObj.getData();
-        assert.propertyVal(data, 'healthCheckStatus', 'healthy');
+        assert.propertyVal(data, 'healthcheckStatus', 'healthy');
         assert.propertyVal(data, 'host', 'localhost');
         assert.propertyVal(data.nodeData, 'environment', 'staging');
         assert.propertyVal(data, 'port', '2181');
