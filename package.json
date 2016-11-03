@@ -1,6 +1,6 @@
 {
   "name": "ranger-node",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Service Discovery framework with Zookeeper",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
     "type": "git",
     "url": "https://github.com/umangkedia/node-ranger.git"
   },
+  "license" : "BSD-3-Clause",
   "dependencies": {
     "async": "2.0.1",
     "chai": "^3.5.0",
