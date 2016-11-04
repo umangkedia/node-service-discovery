@@ -9,7 +9,7 @@
   "author": "Umang Kedia",
   "repository": {
     "type": "git",
-    "url": "https://github.com/umangkedia/node-ranger.git"
+    "url": "https://github.com/umangkedia/node-service-discovery.git"
   },
 	"keywords": [
 	 "ranger",
