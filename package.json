@@ -1,6 +1,6 @@
 {
   "name": "ranger-node",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Service Discovery framework built on top of Zookeeper",
   "main": "index.js",
   "scripts": {
