@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "6"
+  - "4.4.x"
 
 before_install:
   - sudo apt-get install zookeeperd
