@@ -42,7 +42,7 @@ var healthCheck = function () {
 ```
 ## Installation
 
-    npm install ranger-node --save
+    npm install node-service-discovery --save
 
 ## Examples
 
@@ -51,9 +51,9 @@ var healthCheck = function () {
 ```javascript
 'use strict';
 
-var Ranger                  = require('ranger-node').Ranger;
-var ServiceInstanceBuilder  = require("ranger-node").ServiceInstanceBuilder;
-var ServiceDiscoveryBuilder = require('ranger-node').ServiceDiscoveryBuilder;
+var Ranger                  = require('node-service-discovery').Ranger;
+var ServiceInstanceBuilder  = require("node-service-discovery").ServiceInstanceBuilder;
+var ServiceDiscoveryBuilder = require('node-service-discovery').ServiceDiscoveryBuilder;
 
 //Create a Ranger Client
 var rangerClient = Ranger.newClient(process.env.ZK_CONNECTION_STRING || '127.0.0.1:2181');
@@ -97,9 +97,9 @@ instanceProvider.getInstance();
 
 'use strict';
 
-var Ranger                  = require('ranger-node').Ranger;
-var ServiceInstanceBuilder  = require("ranger-node").ServiceInstanceBuilder;
-var ServiceDiscoveryBuilder = require('ranger-node').ServiceDiscoveryBuilder;
+var Ranger                  = require('node-service-discovery').Ranger;
+var ServiceInstanceBuilder  = require("node-service-discovery").ServiceInstanceBuilder;
+var ServiceDiscoveryBuilder = require('node-service-discovery').ServiceDiscoveryBuilder;
 
 //Create a Ranger Client
 var rangerClient = Ranger.newClient(process.env.ZK_CONNECTION_STRING || '127.0.0.1:2181');
