@@ -21,8 +21,8 @@ describe("InstanceProvider Test", function () {
         }
     };
 
-    var serviceInstanceHost1 = new ServiceInstance("test/v1", "localhost", "8080", "staging", [healthCheck()]);
-    var serviceInstanceHost2 = new ServiceInstance("test/v1", "localhost", "8081", "staging", [healthCheck()]);
+    var serviceInstanceHost1 = new ServiceInstance("foobar", "localhost", "8080", "staging", [healthCheck()]);
+    var serviceInstanceHost2 = new ServiceInstance("foobar", "localhost", "8081", "staging", [healthCheck()]);
     before(function (done) {
         //start client
         var rangerClient = Ranger.newClient('localhost:2181');
@@ -42,7 +42,7 @@ describe("InstanceProvider Test", function () {
                 .serviceInstance(serviceInstanceHost2)
                 .build();
 
-            //register both the services. /basePath/test/v1 will have two children, localhost:8080 and localhost:8081
+            //register both the services. /basePath/foobar will have two children, localhost:8080 and localhost:8081
             serviceDiscovery1.registerService(function (error, result) {
                 if (!error) {
                     serviceDiscovery2.registerService(function (error, result) {
@@ -58,9 +58,9 @@ describe("InstanceProvider Test", function () {
 
     /*
     after(function (done) {
-        serviceDiscovery1.unRegisterService("/basePath/test/v1/localhost:8080", function (error, result) {
+        serviceDiscovery1.unRegisterService("/basePath/foobar/localhost:8080", function (error, result) {
             if (!error) {
-                serviceDiscovery2.unRegisterService("/basePath/test/v1/localhost:8081", function (error, result) {
+                serviceDiscovery2.unRegisterService("/basePath/foobar/localhost:8081", function (error, result) {
                     done(error);
                 });
             }
@@ -69,7 +69,7 @@ describe("InstanceProvider Test", function () {
     */
 
     it("should return a random node", function (done) {
-        instanceProvider = new InstanceProvider(serviceDiscovery1, "test/v1", "Random");
+        instanceProvider = new InstanceProvider(serviceDiscovery1, "foobar", "Random");
         
         instanceProvider.init(function (error) {
             if (!error) {
@@ -93,7 +93,7 @@ describe("InstanceProvider Test", function () {
     });
 
     it("should return node in roundrobin order", function (done) {
-        instanceProvider = new InstanceProvider(serviceDiscovery1, "test/v1", "RoundRobin");
+        instanceProvider = new InstanceProvider(serviceDiscovery1, "foobar", "RoundRobin");
 
         instanceProvider.init(function (error) {
             if (!error) {
