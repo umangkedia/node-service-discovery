@@ -11,6 +11,14 @@
     "type": "git",
     "url": "https://github.com/umangkedia/node-ranger.git"
   },
+	"keywords": [
+	 "ranger",
+   	 "zookeeper",
+   	 "service",
+   	 "discovery",
+   	 "javascript",
+   	 "curator"
+  ],
   "license" : "BSD-3-Clause",
   "dependencies": {
     "async": "2.0.1",
