@@ -1,7 +1,7 @@
 {
   "name": "ranger-node",
   "version": "0.0.2",
-  "description": "Service Discovery framework with Zookeeper",
+  "description": "Service Discovery framework built on top of Zookeeper",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --recursive tests/"
