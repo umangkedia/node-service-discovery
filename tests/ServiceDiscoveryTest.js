@@ -46,7 +46,6 @@ describe("ServiceDiscovery Test", function () {
         });
     });
 
-
     it("should register service in zookeeper", function (done) {
         serviceDiscovery.registerService(function (error, result) {
             assert.isNull(error, "error is null");
