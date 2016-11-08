@@ -109,7 +109,7 @@ rangerClient.start();
  * Register a Service
  *
  * process.env.environment is whatever is the environment you are using
- * Additionally, you can also bind the health-checks with the service instance
+ * Additionally, you can also bind the health-checks with the service instance (healthcheck is optional)
  */
 var serviceInstance = ServiceInstanceBuilder
         .builder()
