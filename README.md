@@ -30,7 +30,7 @@ Following data is stored on ZK path (/basePath/serviceName/HOST:PORT)
 }
 ```
 
-####Health Check
+####Health Check (Optional)
 Define a healthCheck. It should contain isHealthy() method.
 ```javascript
 var healthCheck = function () {
