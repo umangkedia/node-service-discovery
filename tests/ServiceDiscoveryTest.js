@@ -9,7 +9,6 @@ var Ranger = require('../lib/Ranger');
 var ServiceDiscoveryBuilder = require("../lib/ServiceDiscoveryBuilder");
 var ServiceInstance = require("../lib/ServiceInstance");
 var events = require('events');
-var sinon = require('sinon');
 var eventEmitter = new events.EventEmitter();
 
 describe("ServiceDiscovery Test", function () {
