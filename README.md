@@ -75,7 +75,7 @@ var serviceDiscovery = ServiceDiscoveryBuilder
         .client(rangerClient)
         .serviceInstance(serviceInstance)
         .basePath('services')
-        .refreshInterval(process.env.refreshInterval || 10000)
+        .refreshInterval(10000)
         .build();
 
 // Create the instance provider (selectionStrategy: 'RoundRobin' or 'Random')
@@ -120,8 +120,8 @@ rangerClient.start();
  */
 var serviceInstance = ServiceInstanceBuilder
         .builder()
-        .host(process.env.HOST)
-        .port(process.env.PORT_8080)
+        .host("localhost")
+        .port(8080) //integer
         .environment(process.env.environment || 'development')
         .healthChecks([healthCheck])
         .name('my-service')
