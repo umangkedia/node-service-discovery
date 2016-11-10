@@ -1,6 +1,6 @@
 {
   "name": "node-service-discovery",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Service Discovery framework built on top of Zookeeper",
   "main": "index.js",
   "scripts": {
@@ -11,15 +11,16 @@
     "type": "git",
     "url": "https://github.com/umangkedia/node-service-discovery.git"
   },
-	"keywords": [
-	 "ranger",
-   	 "zookeeper",
-   	 "service",
-   	 "discovery",
-   	 "javascript",
-   	 "curator"
+  "keywords": [
+    "ranger",
+    "zookeeper",
+    "service",
+    "discovery",
+    "javascript",
+    "curator",
+    "service discovery"
   ],
-  "license" : "BSD-3-Clause",
+  "license": "BSD-3-Clause",
   "dependencies": {
     "async": "2.0.1",
     "chai": "^3.5.0",

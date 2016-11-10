@@ -16,6 +16,7 @@ Has support for **healthchecks** so you can safely take the nodes Out of Rotatio
 **Note**:
 1. Don't save a node. The getInstance query is **extremely fast** and **in-memory**. It doesn't make any remote calls
 
+
 ####Data Model
 Following data is stored on ZK path (/basePath/serviceName/HOST:PORT)
 ```json
@@ -31,12 +32,12 @@ Following data is stored on ZK path (/basePath/serviceName/HOST:PORT)
 ```
 
 ####Health Check (Optional)
-Define a healthCheck. It should contain isHealthy() method.
+Define a healthCheck. It should contain isHealthy() method. You can add an array of healthChecks if required
 ```javascript
 var healthCheck = function () {
                 return {
                     isHealthy: function () {
-                        return true; //add logic here for OOR, BIR
+                        return true; //add logic here for returning healthy/unhealthy status
                     }
                 }};
 ```
@@ -58,7 +59,9 @@ var ServiceDiscoveryBuilder = require('node-service-discovery').ServiceDiscovery
 //Create a Ranger Client
 var rangerClient = Ranger.newClient(process.env.ZK_CONNECTION_STRING || '127.0.0.1:2181');
 
-/* start emits 'connected' event. You can initialize following things after the 'connected' event if required */
+/** start emits 'connected' event. You can initialize following things after the event
+ *  Eg: rangerClient.once('connected') { //initialize following code }
+ */
 rangerClient.start();
 
 
@@ -103,6 +106,10 @@ var ServiceDiscoveryBuilder = require('node-service-discovery').ServiceDiscovery
 
 //Create a Ranger Client
 var rangerClient = Ranger.newClient(process.env.ZK_CONNECTION_STRING || '127.0.0.1:2181');
+
+/** start emits 'connected' event. You can initialize following things after the event
+ *  Eg: rangerClient.once('connected') { //initialize following code }
+ */
 rangerClient.start();
 
 /**
@@ -125,3 +132,20 @@ serviceDiscovery.registerService(function(error) {
 });
 ```
 
+### Health Check change propagation
+
+```javascript
+
+'use strict';
+
+/* Register service using above example */
+
+/** Emit following event on serviceDiscovery instance when health of you app changes on OOR/BIR
+ * This will update the correct status for serviceInstance in Zookeeper
+ * isHealthy() method mentioned above should return corresponding value after health status change
+ */
+ 
+serviceDiscovery.emit('healthCheckChange');
+
+
+```

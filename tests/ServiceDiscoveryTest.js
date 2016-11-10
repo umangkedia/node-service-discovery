@@ -8,9 +8,26 @@ var expect = require('chai').expect;
 var Ranger = require('../lib/Ranger');
 var ServiceDiscoveryBuilder = require("../lib/ServiceDiscoveryBuilder");
 var ServiceInstance = require("../lib/ServiceInstance");
+var events = require('events');
+var sinon = require('sinon');
+var eventEmitter = new events.EventEmitter();
 
 describe("ServiceDiscovery Test", function () {
     var serviceDiscovery;
+
+    var healthCheck = function () {
+        var isHealthy = true;
+        return {
+            isHealthy: function () {
+                return isHealthy;
+            },
+            setStatus: function (status) {
+                isHealthy = status;
+            }
+        }
+    };
+
+    var instanceHealthCheck;
     beforeEach(function (done) {
         //start client
         var rangerClient = Ranger.newClient('localhost:2181');
@@ -18,16 +35,21 @@ describe("ServiceDiscovery Test", function () {
 
         rangerClient.on('connected', function () {
 
-            var healthCheck = function () {
+            healthCheck = function () {
+                var isHealthy = true;
                 return {
                     isHealthy: function () {
-                        return true;
+                        return isHealthy;
+                    },
+                    setStatus: function (status) {
+                        isHealthy = status;
                     }
                 }
             };
 
+            instanceHealthCheck = healthCheck();
             //create service instance
-            var serviceInstance = new ServiceInstance("test", "localhost", "2181", "staging", [healthCheck()]);
+            var serviceInstance = new ServiceInstance("test", "localhost", "2181", "staging", [instanceHealthCheck]);
 
             serviceDiscovery = ServiceDiscoveryBuilder.builder()
                 .basePath('basePath')
@@ -60,6 +82,25 @@ describe("ServiceDiscovery Test", function () {
                 assert.equal(result[0], "localhost:2181");
                 done();
             })
+        })
+    });
+
+    it("should update instance data on health check change. healthy -> unhealthy", function (done) {
+        serviceDiscovery.registerService(function (error, result) {
+            if (error)
+                done(error);
+
+            else {
+                instanceHealthCheck.setStatus(false);
+                serviceDiscovery.emit('healthCheckChange');
+                serviceDiscovery.client.getZkClient().getData("/basePath/test/localhost:2181", null, function (error, data, stat) {
+                    if (error)
+                        return done(error);
+
+                    assert.equal("unhealthy", JSON.parse(data).healthcheckStatus);
+                    done();
+                });
+            }
         })
     });
 });
