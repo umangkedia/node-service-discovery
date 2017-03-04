@@ -1,6 +1,6 @@
 {
   "name": "node-service-discovery",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Service Discovery framework built on top of Zookeeper",
   "main": "index.js",
   "scripts": {
