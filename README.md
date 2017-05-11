@@ -68,14 +68,14 @@ rangerClient.start();
 /**
  * Create the Service Discovery Instance
  *
- * process.env.refreshInterval is the interval to check for the updation of nodes in ZK.
+ * refreshInterval is the interval to check for the updation of nodes in ZK.
  */
 var serviceDiscovery = ServiceDiscoveryBuilder
         .builder()
         .client(rangerClient)
         .serviceInstance(serviceInstance)
         .basePath('services')
-        .refreshInterval(10000)
+        .refreshInterval(5000)
         .build();
 
 // Create the instance provider (selectionStrategy: 'RoundRobin' or 'Random')
